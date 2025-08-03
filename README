@@ -1,0 +1,25 @@
+# Build docker image:
+docker build -t shiny-docker-image
+
+# Run Shiny app:
+docker run -p 3838:3838 shiny-docker-image
+
+# Now visit: http://localhost:3838/app
+
+
+# Share Image:
+
+# Option 1 - export and send
+docker save shiny-docker-image > shiny-docker-image.tar
+# Send tar file to someone
+
+# Then load with:
+docker load < shiny-docker-image.tar
+
+#Option 2 - Push to Docker Hub
+# Tag and push (requires Docker Hub account)
+docker tag shiny-docker-image yourusername/shiny-docker-image
+docker push yourusername/shiny-docker-image
+
+# The run with:
+docker run -p 3838:3838 yourusername/shiny-docker-image
