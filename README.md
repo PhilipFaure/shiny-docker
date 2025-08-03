@@ -10,8 +10,7 @@ docker build -t shiny-docker-image .
 ```{bash}
 docker run -p 3838:3838 shiny-docker-image
 ```
-
-### Now visit: http://localhost:3838/app
+Now visit: http://localhost:3838/app
 
 
 ### Share Image:
@@ -20,8 +19,7 @@ docker run -p 3838:3838 shiny-docker-image
 ```{bash}
 docker save shiny-docker-image > shiny-docker-image.tar
 ```
-
-### Send tar file to someone
+Now send tar file to someone
 
 ### Then load with:
 ```{bash}
