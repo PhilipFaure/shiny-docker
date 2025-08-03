@@ -32,8 +32,8 @@ docker load < shiny-docker-image.tar
 ### Tag and push (requires Docker Hub account)
 ```{bash}
 docker login
-docker tag shiny-docker-image tierboskat/shiny-docker-image:0.0.1
-docker push tierboskat/shiny-docker-image:0.0.1
+docker tag shiny-docker-image tierboskat/shiny-docker-image
+docker push tierboskat/shiny-docker-image
 ```
 
 ### The run with:
