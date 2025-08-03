@@ -19,17 +19,17 @@
 # }
 # 
 # shinyApp(ui = ui, server = server)
+
 library(shiny)
 library(DT)
 library(shinyFiles)
-library(shinyjs)
+source("video_utils.R")  
 
 ui <- fluidPage(
-  useShinyjs(),
-  titlePanel("Video Viewer"),
+  titlePanel("Video Viewer App"),
   sidebarLayout(
     sidebarPanel(
-      shinyDirButton("folder", "Choose Folder", "Select a folder with videos"),
+      shinyDirButton("folder", "Choose Folder", "Select folder with videos"),
       verbatimTextOutput("folderPath"),
       DTOutput("videoTable")
     ),
@@ -74,14 +74,9 @@ server <- function(input, output, session) {
     req(vids)
     selected <- input$videoTable_rows_selected
     if (length(selected) == 1) {
-      filePath <- vids$FullPath[selected]
-      tags$video(
-        src = normalizePath(filePath, winslash = "/"),
-        type = "video/mp4",
-        controls = NA,
-        width = "100%",
-        autoplay = NA
-      )
+      rel_path <- vids$FullPath[selected]
+      rel_url <- file.path("videos", basename(rel_path))  # expects video to be symlinked/mounted in www/videos/
+      video_viewer(rel_url)
     } else {
       h4("Select a video to view")
     }
@@ -89,3 +84,4 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
+
