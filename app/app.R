@@ -40,7 +40,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  volumes <- c(Home = normalizePath("~"))
+  volumes <- c(Videos = "/videos")
   shinyDirChoose(input, "folder", roots = volumes, session = session)
   
   folderPath <- reactiveVal(NULL)

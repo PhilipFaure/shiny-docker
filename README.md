@@ -10,7 +10,7 @@ docker build -t shiny-docker-image .
 
 ### Run Shiny app:
 ```{bash}
-docker run -p 3838:3838 shiny-docker-image
+docker run -p 3838:3838 -v "C:\Users\Vulpe\Documents\GitHub\shiny-docker\app\www\videos:/videos" shiny-docker-image
 ```
 Now visit: http://localhost:3838/app
 
