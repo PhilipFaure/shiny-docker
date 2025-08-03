@@ -1,3 +1,5 @@
+# This is an example to build a Shiny app and wrap it in a Docker image. The repo can be cloned and the shiny app adapted as necessary.
+
 # Build docker image:
 docker build -t shiny-docker-image
 
